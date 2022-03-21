@@ -1,11 +1,12 @@
 
 //var parameters = ("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,128}$");
 var parameters = {
-    upperCase: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
-    lowerCase: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
-    number: ["1","2","3","4","5","6","7","8","9"],
-    special: ["#","?","!","@","$","%","^","&","*","-"],
+    upperCaseP: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+    lowerCaseP: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+    numberP: ["1","2","3","4","5","6","7","8","9"],
+    specialP: ["#","?","!","@","$","%","^","&","*","-"],
   };
+  var passwordLength = ""
   function storeUserInput() {
     var passwordLength = window.prompt("How long would you like your password to be? Enter a length between 8 and 128 characters. ")
     passwordLength = parseInt(passwordLength)
@@ -28,8 +29,8 @@ var parameters = {
           window.alert("Please choose at least one.")
           return false;
         }
-      };
-  storeUserInput();
+    };
+  var inputs = storeUserInput();
   
   var randomNumber = function(chararray){
     var value = Math.floor(Math.random * (chararray.length));
@@ -38,32 +39,38 @@ var parameters = {
   
   function generatePassword(){
   
-    var chosen = storeUserInput[parameters.lowerCase + parameters.upperCase + parameters.number + parameters.special];
-    while (randomNumber() % passwordLength === 0){
+    var chosen = [parameters];
+    while (chosen % passwordLength === 0){
       if (lowerCase = true){
-      return randomNumber(parameters.lowerCase);
+      return randomNumber(parameters.lowerCaseP);
   
        } else if (upperCase = true){
-      return randomNumber(parameters.upperCase);
+      return randomNumber(parameters.upperCaseP);
   
       }else if (numbers = true){
-      return randomNumber(parameters.number);
+      return randomNumber(parameters.numberP);
   
       } else if (special = true){
-      return randomNumber(parameters.special);
+      return randomNumber(parameters.specialP);
     }
      else window.prompt("Your password is " + chosen);
    console.log(generatePassword());
   
     }
+    return chosen; 
+};
   generatePassword();
   };
   
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate"); {
-  
+
   // Write password to the #password input
-  function writePassword() {
+  function writePassword(event) {
+    var targetEl = event.target;
+    if (targetEl.matches(".btn")) {
+        console.log("button", targetEl);
+    }
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
     
