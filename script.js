@@ -31,16 +31,17 @@ var parameters = {
         }
     };
   var inputs = storeUserInput();
+  console.log(inputs);
   
   var randomNumber = function(chararray){
-    var value = Math.floor(Math.random * (chararray.length));
+    var value = Math.floor(Math.random() * (chararray.length));
     return value;
   };
   
   function generatePassword(){
   
-    var chosen = [parameters];
-    while (chosen % passwordLength === 0){
+    var chosen = inputs;
+    for (i = 0; i < chosen.length; i++){
       if (lowerCase = true){
       return randomNumber(parameters.lowerCaseP);
   
@@ -53,14 +54,16 @@ var parameters = {
       } else if (special = true){
       return randomNumber(parameters.specialP);
     }
-     else window.prompt("Your password is " + chosen);
-   console.log(generatePassword());
-  
+    
+    window.prompt("Your password is " + chosen);
+    console.log(generatePassword());
     }
-    return chosen; 
-};
+    return chosen;
+    }
+
+
   generatePassword();
-  };
+  
   
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate"); {
