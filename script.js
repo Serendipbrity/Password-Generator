@@ -6,7 +6,14 @@ var parameters = {
     numberP: ["1","2","3","4","5","6","7","8","9"],
     specialP: ["#","?","!","@","$","%","^","&","*","-"],
   };
-  var passwordLength = ""
+//   var passwordLength = ""
+//   var lowercase;
+//   var uppercase;
+//   var numbers;
+//   var special;
+  //var inputs = [lowercase, uppercase, numbers, special];
+  //console.log(inputs);
+
   function storeUserInput() {
     var passwordLength = window.prompt("How long would you like your password to be? Enter a length between 8 and 128 characters. ")
     passwordLength = parseInt(passwordLength)
@@ -20,32 +27,52 @@ var parameters = {
           } else if (passwordLength < 8){
           window.alert("Please pick a valid selection." )
           return false;
-        };
-    var lowerCase = window.confirm("Would you like to include lowercase characters? Select OK for yes or Cancel for no.");
-    var upperCase = window.confirm("Would you like to include uppercase characters? Select OK for yes or Cancel for no. ");
-    var numbers = window.confirm("Would you like to include numbers?  Select OK for yes or Cancel for no.");
-    var special = window.confirm("Would you like to include special characters? Select OK for yes or Cancel for no.");
-        if (!lowerCase || !upperCase || !numbers || !special ){
-          window.alert("Please choose at least one.")
-          return false;
         }
+        var lowercase = window.confirm("Would you like to include lowercase characters? Select OK for yes or Cancel for no.");
+    console.log(lowercase);
+    var uppercase = window.confirm("Would you like to include uppercase characters? Select OK for yes or Cancel for no. ");
+    console.log(uppercase);
+    var numbers = window.confirm("Would you like to include numbers?  Select OK for yes or Cancel for no.");
+    console.log(numbers);
+    var special = window.confirm("Would you like to include special characters? Select OK for yes or Cancel for no.");
+    console.log(special);
+        if (!lowercase && !uppercase && !numbers && !special ){
+          window.alert("Please choose at least one.")
+          //return false;
+        };
+      
+    return {
+        passwordLength, 
+        lowercase,
+        uppercase,
+        numbers,
+        special,
     };
-  var inputs = storeUserInput();
-  console.log(inputs);
+    };
+
+
+    
+
+ 
+ 
   
   var randomNumber = function(chararray){
-    var value = Math.floor(Math.random() * (chararray.length));
-    return value;
+    var index = Math.floor(Math.random() * (chararray.length));
+    var char = chararray[index];
+    console.log(char);
+    return char;
   };
+
   
   function generatePassword(){
   
-    var chosen = inputs;
-    for (i = 0; i < chosen.length; i++){
-      if (lowerCase = true){
+    var chosen = storeUserInput();
+    console.log(chosen);
+    for (var i = 0; i < chosen.passwordLength; i++){
+      if (lowercase = true){
       return randomNumber(parameters.lowerCaseP);
   
-       } else if (upperCase = true){
+       } else if (uppercase = true){
       return randomNumber(parameters.upperCaseP);
   
       }else if (numbers = true){
@@ -56,13 +83,11 @@ var parameters = {
     }
     
     window.prompt("Your password is " + chosen);
-    console.log(generatePassword());
+    console.log(chosen);
     }
     return chosen;
     }
 
-
-  generatePassword();
   
   
   // Get references to the #generate element
@@ -70,10 +95,8 @@ var parameters = {
 
   // Write password to the #password input
   function writePassword(event) {
-    var targetEl = event.target;
-    if (targetEl.matches(".btn")) {
-        console.log("button", targetEl);
-    }
+   
+
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
     
@@ -81,10 +104,8 @@ var parameters = {
     passwordText.value = password;
   
   }
-  writePassword();
-  };
   
   // Add event listener to generate button
   generateBtn.addEventListener("click", writePassword);
-  
-    //console.log(passwordLength);
+
+}
