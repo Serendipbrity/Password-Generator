@@ -53,7 +53,7 @@ var parameters = {
 
     
 
- 
+
  
   
   var randomNumber = function(chararray){
@@ -62,30 +62,30 @@ var parameters = {
     console.log(char);
     return char;
   };
+  
+
 
   
   function generatePassword(){
-  
+    var whole = [] 
     var chosen = storeUserInput();
+
     console.log(chosen);
+
+    if (chosen.lowercase == true){whole = whole.concat(parameters.lowerCaseP)};
+    if (chosen.uppercase == true){whole = whole.concat(parameters.upperCaseP)};
+    if (chosen.numbers == true){whole = whole.concat(parameters.numberP)};
+    if (chosen.special == true){whole = whole.concat(parameters.specialP)};
+
+    var passContainer = ""
+
     for (var i = 0; i < chosen.passwordLength; i++){
-      if (lowercase = true){
-      return randomNumber(parameters.lowerCaseP);
-  
-       } else if (uppercase = true){
-      return randomNumber(parameters.upperCaseP);
-  
-      }else if (numbers = true){
-      return randomNumber(parameters.numberP);
-  
-      } else if (special = true){
-      return randomNumber(parameters.specialP);
+        passContainer = passContainer + randomNumber(whole)
+    
     }
     
-    window.prompt("Your password is " + chosen);
-    console.log(chosen);
-    }
-    return chosen;
+    window.prompt("Your password is " + passContainer );
+    
     }
 
   
