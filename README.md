@@ -5,7 +5,8 @@ A Random password generator where user can select preferences
 https://serendipbrity.github.io/Password-Generator/
 
 
-# Github Link
+## Github Link
 https://github.com/Serendipbrity/Password-Generator
 
-file:///Users/brittanicourt/Desktop/projects/Password-Generator-1/index.html
+## Screenshot
+ <img src = "./Users/brittanicourt/Desktop/projects/Password-Generator-1/Screen Shot">
