@@ -1,23 +1,18 @@
 
-//var parameters = ("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,128}$");
+// parameters for computer to randomly choose from 
 var parameters = {
     upperCaseP: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
     lowerCaseP: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
     numberP: ["1","2","3","4","5","6","7","8","9"],
     specialP: ["#","?","!","@","$","%","^","&","*","-"],
   };
-//   var passwordLength = ""
-//   var lowercase;
-//   var uppercase;
-//   var numbers;
-//   var special;
-  //var inputs = [lowercase, uppercase, numbers, special];
-  //console.log(inputs);
 
+// function to store users inputs
   function storeUserInput() {
     var passwordLength = window.prompt("How long would you like your password to be? Enter a length between 8 and 128 characters. ")
     passwordLength = parseInt(passwordLength)
        console.log(passwordLength);
+       // if password length not within allowed range or nothing was input
        if (!passwordLength){
           window.alert("Please pick a valid selection." )
           return null;
@@ -28,6 +23,7 @@ var parameters = {
           window.alert("Please pick a valid selection." )
           return false;
         }
+        // true/false inputs
         var lowercase = window.confirm("Would you like to include lowercase characters? Select OK for yes or Cancel for no.");
     console.log(lowercase);
     var uppercase = window.confirm("Would you like to include uppercase characters? Select OK for yes or Cancel for no. ");
@@ -38,9 +34,9 @@ var parameters = {
     console.log(special);
         if (!lowercase && !uppercase && !numbers && !special ){
           window.alert("Please choose at least one.")
-          //return false;
+        
         };
-      
+      // store inputs
     return {
         passwordLength, 
         lowercase,
@@ -55,7 +51,7 @@ var parameters = {
 
 
  
-  
+  // random number generator
   var randomNumber = function(chararray){
     var index = Math.floor(Math.random() * (chararray.length));
     var char = chararray[index];
